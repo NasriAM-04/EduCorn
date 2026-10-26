@@ -1,5 +1,9 @@
 # EduCorn — School Management System
 
+**[Live Website — Try EduCorn](https://nasriam-04.github.io/EduCorn/)**
+
+**[GitHub Repository — View Source Code](https://github.com/NasriAM-04/EduCorn)**
+
 **A school management application designed to make managing academic records more organized, accessible, and efficient.**
 
 **Project Status:** Under Active Development
