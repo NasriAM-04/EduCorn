@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduCorn | School Management Dashboard</title>
+    <link rel="icon" type="image/png" href="images/EduCorn_Favicon_Transparent_512.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- EduCorn Demo Login Page -->
+    <section id="login-page" class="login-page" hidden>
+        <div class="login-container">
+
+            <img
+                src="images/EduCorn_Mascot_Transparent.png"
+                alt="EduCorn Official Mascot"
+                class="login-mascot">
+
+            <h1>Welcome to EduCorn</h1>
+            <p class="login-description">
+                Enter your name to access the EduCorn Management Dashboard.
+            </p>
+
+            <form id="login-form">
+                <div class="login-name-fields">
+                    <div class="login-field">
+                        <label for="login-first-name">First Name</label>
+                        <input
+                            type="text"
+                            id="login-first-name"
+                            name="firstName"
+                            placeholder="First name"
+                            autocomplete="off"
+                            required>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="login-last-name">Last Name</label>
+                        <input
+                            type="text"
+                            id="login-last-name"
+                            name="lastName"
+                            placeholder="Last name"
+                            autocomplete="off"
+                            required>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-submit">
+                    Enter Dashboard
+                </button>
+            </form>
+
+            <p class="login-demo-notice">
+                Portfolio demonstration — no real account required.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Logout Confirmation Dialog -->
+    <div id="logout-modal" class="logout-modal" hidden>
+        <div class="logout-dialog"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="logout-title"
+             aria-describedby="logout-description">
+
+            <h2 id="logout-title">Confirm Logout</h2>
+
+            <p id="logout-description">
+                Are you sure you want to log out of EduCorn?
+            </p>
+
+            <div class="logout-buttons">
+                <button type="button"
+                        id="cancel-logout"
+                        class="logout-cancel">
+                    No
+                </button>
+
+                <button type="button"
+                        id="confirm-logout"
+                        class="logout-confirm">
+                    Yes, Logout
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/EduCorn_Mascot_Transparent.png"
+                alt="EduCorn Mascot"
+                class="educorn-mascot">
+
+            <img src="images/EduCorn_Wordmark_Recolored_Cropped.png"
+             alt="EduCorn"
+             class="educorn-wordmark">
+
+             <img src="images/EduCorn_Management_System_Subtitle_Transparent.png"
+             alt="Management System"
+             class="educorn-subtitle">
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-link active"
+               data-section="dashboard">Dashboard</a>
+
+            <a href="#faculty" class="nav-link"
+               data-section="faculty">Faculty</a>
+
+            <a href="#students" class="nav-link"
+            data-section="students">Students</a>
+
+            <a href="#courses" class="nav-link"
+               data-section="courses">Courses</a>
+
+            <a href="#sections" class="nav-link"
+               data-section="sections">Sections</a>
+
+            <a href="#enrollments" class="nav-link"
+               data-section="enrollments">Enrollments</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>EduCorn v1.0</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Top Header -->
+        <header class="top-header">
+            <div>
+                <h1 id="page-title">EduCorn Management Dashboard</h1>
+                <p id="page-description">Manage school records efficiently.</p>
+            </div>
+
+            <div class="user-profile">
+                <button
+        type="button"
+        class="profile-toggle"
+        id="profile-toggle"
+        aria-expanded="false"
+        aria-controls="profile-menu"
+    >
+        <span>Administrator</span>
+        <span class="avatar">AD</span>
+    </button>
+
+    <div class="profile-menu" id="profile-menu" hidden>
+        <button type="button" class="profile-menu-item" data-profile-action="profile">
+            <span class="profile-menu-icon" aria-hidden="true">👤</span>
+            <span>My Profile</span>
+        </button>
+
+        <button type="button" class="profile-menu-item" data-profile-action="preferences">
+            <span class="profile-menu-icon" aria-hidden="true">⚙</span>
+            <span>Preferences</span>
+        </button>
+
+        <button type="button" class="profile-menu-item" data-profile-action="about">
+            <span class="profile-menu-icon" aria-hidden="true">ⓘ</span>
+            <span>About EduCorn</span>
+        </button>
+
+        <div class="profile-menu-divider"></div>
+
+        <button type="button" class="profile-menu-item logout-item" data-profile-action="logout">
+            <span class="profile-menu-icon" aria-hidden="true">↪</span>
+            <span>Logout</span>
+        </button>
+    </div>
+</div>
+        </header>
+
+        <main>
+
+            <!-- Administrator My Profile -->
+            <section id="my-profile" class="page-section">
+
+                <div class="admin-profile-card">
+
+                    <div class="admin-profile-header">
+                        <div class="admin-profile-avatar" id="profile-page-avatar">
+                            AD
+                        </div>
+
+                        <div>
+                            <h3 id="profile-page-name">Administrator</h3>
+                            <p>School Administrator</p>
+                        </div>
+                    </div>
+
+                    <form id="admin-profile-form">
+
+                        <div class="admin-profile-fields">
+
+                            <div class="admin-profile-field">
+                                <label for="profile-first-name">First Name</label>
+                                <input
+                                    type="text"
+                                    id="profile-first-name"
+                                    name="firstName"
+                                    required>
+                            </div>
+
+                            <div class="admin-profile-field">
+                                <label for="profile-last-name">Last Name</label>
+                                <input
+                                    type="text"
+                                    id="profile-last-name"
+                                    name="lastName"
+                                    required>
+                            </div>
+
+                            <div class="admin-profile-field">
+                                <label for="profile-role">Role</label>
+                                <input
+                                    type="text"
+                                    id="profile-role"
+                                    value="School Administrator"
+                                    readonly>
+                            </div>
+
+                            <div class="admin-profile-field">
+                                <label for="profile-account-type">Account Type</label>
+                                <input
+                                    type="text"
+                                    id="profile-account-type"
+                                    value="Demo Account"
+                                    readonly>
+                            </div>
+
+                        </div>
+
+                        <div class="admin-profile-actions">
+                            <button type="button" id="cancel-profile-changes">
+                                Cancel Changes
+                            </button>
+
+                            <button type="submit" id="save-profile-changes">
+                                Save Changes
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <!-- Dashboard Overview -->
+            <section id="dashboard" class="page-section active">
+                <div class="section-heading">
+                    <h2>Dashboard Overview</h2>
+                    <p>Welcome to your school management system.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <h3>Total Faculty</h3>
+                        <p class="stat-number" id="faculty-count">0</p>
+                        <span>Registered faculty members</span>
+                    </div>
+
+                    <!-- Total Students Card -->
+                    <div class="stat-card">
+                        <h3>Total Students</h3>
+                        <p class="stat-number" id="student-count">0</p>
+                        <span>Registered students</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Total Courses</h3>
+                        <p class="stat-number" id="course-count">0</p>
+                        <span>Available courses</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Total Sections</h3>
+                        <p class="stat-number" id="section-count">0</p>
+                        <span>Course sections</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Total Enrollments</h3>
+                        <p class="stat-number" id="enrollment-count">0</p>
+                        <span>Student enrollments</span>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-panel">
+                    <h3>Quick Overview</h3>
+                    <p>
+                        Use the navigation menu to manage faculty,
+                        courses, sections, and student enrollments.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Faculty Management -->
+            <section id="faculty" class="page-section">
+                <div class="section-heading">
+                    <h2>Faculty Management</h2>
+                    <p>View and manage faculty records.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="table-header">
+                        <h3>Faculty Members</h3>
+                        <button class="primary-btn"
+                                data-action="add"
+                                data-entity="faculty">
+                            + Add Faculty
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Subject</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="faculty-table">
+                                <tr>
+                                    <td colspan="6" class="empty-state">
+                                        No faculty records available.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!-- Student Management -->
+<section id="students" class="page-section">
+    <div class="section-heading">
+        <h2>Student Management</h2>
+        <p>View and manage student records.</p>
+    </div>
+
+    <div class="content-card">
+          <div class="table-header">
+            <h3>Registered Students</h3>
+
+            <button
+                type="button"
+                class="primary-btn"
+
+        data-action="add"
+                data-entity="students">
+                + Add Student
+            </button>
+        </div>
+
+        <!-- Student Records Table -->
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Full Name</th>
+                        <th>Email Address</th>
+                        <th>Major</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="students-table">
+                    <tr>
+                        <td colspan="5" class="empty-state">
+                            No student records available.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+            <!-- Course Management -->
+            <section id="courses" class="page-section">
+                <div class="section-heading">
+                    <h2>Course Management</h2>
+                    <p>View and manage available courses.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="table-header">
+                        <h3>Course List</h3>
+                        <button class="primary-btn"
+                                data-action="add"
+                                data-entity="courses">
+                            + Add Course
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Course Title</th>
+                                    <th>Credits</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courses-table">
+                                <tr>
+                                    <td colspan="4" class="empty-state">
+                                        No courses available.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Management -->
+            <section id="sections" class="page-section">
+                <div class="section-heading">
+                    <h2>Section Management</h2>
+                    <p>Manage course sections and semesters.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="table-header">
+                        <h3>Course Sections</h3>
+                        <button class="primary-btn"
+                                data-action="add"
+                                data-entity="sections">
+                            + Add Section
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Course ID</th>
+                                    <th>Semester</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sections-table">
+                                <tr>
+                                    <td colspan="4" class="empty-state">
+                                        No sections available.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enrollment Management -->
+            <section id="enrollments" class="page-section">
+                <div class="section-heading">
+                    <h2>Enrollment Management</h2>
+                    <p>Manage student course enrollments.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="table-header">
+                        <h3>Student Enrollments</h3>
+                        <button class="primary-btn"
+                                data-action="add"
+                                data-entity="enrollments">
+                            + Add Enrollment
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student Name</th>
+                                    <th>Section ID</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="enrollments-table">
+                                <tr>
+                                    <td colspan="4" class="empty-state">
+                                        No enrollments available.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>EduCorn &copy; 2026 | School Management System</p>
+        </footer>
+
+    </div>
+
+    <!-- Reusable Form Modal -->
+    <div id="form-modal" class="modal" hidden>
+        <div class="modal-content"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="modal-title">
+
+            <div class="modal-header">
+                <h2 id="modal-title">Manage Record</h2>
+                <button type="button"
+                        id="close-modal"
+                        class="close-btn"
+                        aria-label="Close form">
+                    &times;
+                </button>
+            </div>
+
+            <form id="record-form">
+                <div id="form-fields"></div>
+
+                <div class="modal-actions">
+                    <button type="button"
+                            id="cancel-btn"
+                            class="secondary-btn">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-btn">
+                        Save Record
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>
