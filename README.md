@@ -25,12 +25,14 @@ EduCorn also features original branding, including a custom-designed mascot, log
 - Original EduCorn branding and visual assets
 
 ### Demo Administrator Login
-- Personalized login experience using first and last names
-- Administrator name and initials displayed in the dashboard
-- Browser session management
-- Logout functionality with a confirmation dialog
+- Personalized login experience using first and last names.
+- Real-time validation for both First Name and Last Name.
+- Rejects numbers and unsupported special characters with descriptive error messages.
+- Administrator name and initials displayed throughout the dashboard.
+- Browser-based session management.
+- Logout functionality with a confirmation dialog.
 
-**Note:** The current login is intended for demonstration purposes and does not provide production-level authentication.
+**Note:** The current login is intended for portfolio demonstration purposes and does not provide production-level authentication.
 
 ### Faculty Management
 - Add new faculty records
@@ -48,9 +50,28 @@ EduCorn also features original branding, including a custom-designed mascot, log
 - Organize students by academic major
 
 ### Administrator Profile
-- Dedicated profile interface
-- Display administrator information
-- Editable profile fields in development
+- Fully functional Administrator profile management.
+- Displays the Administrator's full name, avatar initials, role, and account type.
+- Allows the Administrator to update their first and last names.
+- Real-time name validation that rejects numbers and unsupported special characters.
+- Displays descriptive validation errors identifying the type of invalid input.
+- Confirmation dialog displays the previous and proposed Administrator names before saving.
+- Selecting **No** cancels the change without modifying the saved name.
+- Selecting **Yes, Save Changes** updates the Administrator's name and avatar initials.
+- Automatically returns to Dashboard after a successful name change.
+- Preserves the updated Administrator information throughout the current browser session.
+
+### Administrator Preferences — Under Development
+- Dedicated Preferences page with completed interface styling and working navigation.
+- **Appearance:** Light Mode, Dark Mode, and Compact Layout options.
+- **Dashboard Preferences:** Default Landing Page selection.
+- **Accessibility:** Text Size and Reduced Motion options.
+- Includes Save Preferences and Restore Defaults buttons.
+- Navigation between Preferences, My Profile, and the management sections displays the appropriate page headers.
+
+**Current Status:** The Preferences interface is implemented, and its controls are visible and selectable. However, theme switching, compact layout, landing-page selection, accessibility adjustments, saving preferences, and restoring defaults are not functional yet.
+
+The Preferences dropdown option is also planned to be hidden while the Preferences page is active.
 
 ### Additional Management Sections
 The interface includes sections for:
@@ -91,6 +112,9 @@ These components are not yet connected. Integrating the frontend with a database
 
 ```text
 EduCorn/
+├── .github/
+│   └── workflows/
+│       └── static.yml
 ├── frontend/
 │   ├── images/
 │   ├── index.html
@@ -121,21 +145,41 @@ EduCorn/
 
 ## Development Roadmap
 
-EduCorn is an ongoing project. Planned work includes:
+EduCorn is an ongoing project. The following checklist tracks completed milestones and planned improvements.
 
-- [x] Create the initial dashboard interface
-- [x] Implement demo Administrator login and logout
-- [x] Implement Faculty management
-- [x] Implement Student management
-- [x] Add original EduCorn branding
-- [x] Publish the source code on GitHub
-- [ ] Complete Administrator profile editing
-- [ ] Develop Course management
-- [ ] Develop Section management
-- [ ] Develop Enrollment management
-- [ ] Integrate the frontend with a database-backed application
-- [ ] Expand testing and improve application reliability
-- [ ] Deploy an interactive web demonstration
+### Completed Milestones
+
+- [x] Create the initial school management dashboard.
+- [x] Implement demo Administrator login and logout.
+- [x] Implement Faculty management with CRUD operations.
+- [x] Implement Student management with CRUD operations.
+- [x] Create original EduCorn branding, including mascot, logo, and visual identity.
+- [x] Publish the project source code on GitHub.
+- [x] Deploy the interactive frontend through GitHub Pages.
+- [x] Implement Administrator My Profile navigation and interface.
+- [x] Implement Administrator name editing and session updates.
+- [x] Add confirmation before saving Administrator profile changes.
+- [x] Add real-time name validation to My Profile.
+- [x] Add real-time name validation to the demo login screen.
+- [x] Implement the Preferences page interface and navigation.
+- [x] Correct dashboard headers when navigating between Administrator and management sections.
+
+### In Progress and Planned
+
+- [ ] Implement Light/Dark Theme switching.
+- [ ] Implement Compact Layout.
+- [ ] Implement Default Landing Page preferences.
+- [ ] Implement Text Size and Reduced Motion settings.
+- [ ] Implement Save Preferences and Restore Defaults.
+- [ ] Hide Preferences from its dropdown while viewing Preferences.
+- [ ] Develop the About EduCorn page.
+- [ ] Improve existing Faculty and Student management.
+- [ ] Complete Course management.
+- [ ] Complete Section management.
+- [ ] Complete Enrollment management.
+- [ ] Rebuild and integrate the Java/SQLite database backend with the frontend.
+- [ ] Implement Demo Data management after the school management modules are functional.
+- [ ] Expand application testing, reliability, and security.
 
 ## Project Goals
 
@@ -159,9 +203,19 @@ The goal is to continue expanding EduCorn into a more complete school management
 
 **EduCorn is actively under development.**
 
-The project currently includes functional frontend features and an existing Java/SQLite database application. Additional functionality, system integration, security improvements, and database-backed web operations remain part of ongoing development.
+The current frontend includes an interactive school management dashboard, functional Faculty and Student management, a demo Administrator login, logout confirmation, and completed Administrator profile editing.
 
-This repository will continue to evolve as new features are implemented, tested, and refined.
+Name validation is implemented in both the login and Administrator profile forms. Invalid entries containing numbers or unsupported special characters are rejected with descriptive error messages.
+
+The Administrator Preferences interface is also available, with working navigation and selectable settings. However, its appearance, dashboard customization, accessibility, and preference-saving functionality remain under development.
+
+Courses, Sections, Enrollments, and About EduCorn are planned for further implementation.
+
+The existing Java/SQLite database application remains separate from the web frontend. Integrating these components is a future development milestone.
+
+**EduCorn's live website is publicly accessible through GitHub Pages**, allowing visitors to explore the current frontend while development continues.
+
+The repository, documentation, and live website will continue to evolve as features are implemented, tested, and refined.
 
 ## Author
 

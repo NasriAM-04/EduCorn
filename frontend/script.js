@@ -447,6 +447,21 @@ function showSection(sectionId) {
 
     profileMenuOption.style.display =
         sectionId === "my-profile" ? "none" : "";
+
+    if (sectionId === "preferences") {
+        document.getElementById("page-title").textContent =
+           "Preferences";
+
+        document.getElementById("page-description").textContent =
+           "Customize your EduCorn dashboard experience.";
+
+    } else if (sectionId !== "my-profile") {
+        document.getElementById("page-title").textContent =
+            "EduCorn Management Dashboard";
+
+        document.getElementById("page-description").textContent =
+            "Manage school records efficiently.";
+        }
 }
 
 navigationLinks.forEach(link => {
@@ -550,6 +565,217 @@ myProfileButton.addEventListener("click", () => {
     profileToggle.setAttribute("aria-expanded", "false");
 
     // My Profile menu visibility will be managed by page navigation.
+});
+
+// =========================================
+// Administrator Preferences Navigation
+// =========================================
+
+const preferencesButton = document.querySelector(
+    '[data-profile-action="preferences"]'
+);
+
+preferencesButton.addEventListener("click", () => {
+    const savedSession = sessionStorage.getItem(SESSION_KEY);
+
+    if (!savedSession) {
+        showLoginPage();
+        return;
+    }
+
+    showSection("preferences");
+    history.replaceState(null, "", "#preferences");
+
+    profileMenu.hidden = true;
+    profileToggle.setAttribute("aria-expanded", "false");
+});
+
+// =========================================
+// Administrator My Profile - Save Changes
+// =========================================
+
+const adminProfileForm = document.getElementById("admin-profile-form");
+
+// =========================================
+// Administrator Profile - Name Validation
+// =========================================
+
+function validateProfileName(input, fieldName) {
+    const name = input.value.trim();
+
+    const hasNumbers = /\p{N}/u.test(name);
+    const hasSpecialCharacters = /[^\p{L}\p{M}\p{N} ]/u.test(name);
+
+    const validNamePattern =
+        /^\p{L}[\p{L}\p{M}]*(?: \p{L}[\p{L}\p{M}]*)*$/u;
+
+    let errorMessage = "";
+
+    if (hasNumbers && hasSpecialCharacters) {
+        errorMessage =
+            `${fieldName} cannot contain numbers or special characters.`;
+    } else if (hasNumbers) {
+        errorMessage =
+            `${fieldName} cannot contain numbers.`;
+    } else if (hasSpecialCharacters) {
+        errorMessage =
+            `${fieldName} cannot contain special characters.`;
+    } else if (name && !validNamePattern.test(name)) {
+        errorMessage =
+            `Please enter a valid ${fieldName.toLowerCase()} using letters only.`;
+    }
+
+    input.setCustomValidity(errorMessage);
+
+    if (errorMessage) {
+        input.reportValidity();
+    }
+
+    return !errorMessage;
+}
+
+const profileFirstNameInput = document.getElementById(
+    "profile-first-name"
+);
+
+const profileLastNameInput = document.getElementById(
+    "profile-last-name"
+);
+
+profileFirstNameInput.addEventListener("input", () => {
+    validateProfileName(profileFirstNameInput, "First name");
+});
+
+profileLastNameInput.addEventListener("input", () => {
+    validateProfileName(profileLastNameInput, "Last name");
+});
+
+// =========================================
+// Login Screen - Name Validation
+// =========================================
+
+const loginFirstNameInput = document.getElementById(
+    "login-first-name"
+);
+
+const loginLastNameInput = document.getElementById(
+    "login-last-name"
+);
+
+loginFirstNameInput.addEventListener("input", () => {
+    validateProfileName(loginFirstNameInput, "First name");
+});
+
+loginLastNameInput.addEventListener("input", () => {
+    validateProfileName(loginLastNameInput, "Last name");
+});
+
+// First Name and Last Name input listeners inserted here
+const profileConfirmModal = document.getElementById("profile-confirm-modal");
+const profileConfirmDescription = document.getElementById(
+    "profile-confirm-description"
+);
+
+const cancelProfileConfirm = document.getElementById(
+    "cancel-profile-confirm"
+);
+
+const confirmProfileSave = document.getElementById(
+    "confirm-profile-save"
+);
+
+let pendingProfileChanges = null;
+
+// Open confirmation before saving
+adminProfileForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const firstName = document
+        .getElementById("profile-first-name")
+        .value.trim();
+
+    const lastName = document
+        .getElementById("profile-last-name")
+        .value.trim();
+
+    if (!firstName || !lastName) {
+        return;
+    }
+
+    const savedSession = sessionStorage.getItem(SESSION_KEY);
+
+    if (!savedSession) {
+        showLoginPage();
+        return;
+    }
+
+    const session = JSON.parse(savedSession);
+
+    const oldName = `${session.firstName} ${session.lastName}`;
+    const newName = `${firstName} ${lastName}`;
+
+    // No confirmation needed if the name has not changed
+    if (
+        firstName === session.firstName &&
+        lastName === session.lastName
+    ) {
+        showSection("dashboard");
+        history.replaceState(null, "", "#dashboard");
+        return;
+    }
+
+    pendingProfileChanges = { firstName, lastName };
+
+    profileConfirmDescription.textContent =
+        `Are you sure you want to change your Administrator name from ${oldName} to ${newName}?`;
+
+    profileConfirmModal.hidden = false;
+});
+
+// No - Close without saving
+cancelProfileConfirm.addEventListener("click", () => {
+    profileConfirmModal.hidden = true;
+    pendingProfileChanges = null;
+});
+
+// Yes - Save changes and return to Dashboard
+confirmProfileSave.addEventListener("click", () => {
+    if (!pendingProfileChanges) {
+        return;
+    }
+
+    const savedSession = sessionStorage.getItem(SESSION_KEY);
+
+    if (!savedSession) {
+        profileConfirmModal.hidden = true;
+        pendingProfileChanges = null;
+        showLoginPage();
+        return;
+    }
+
+    const session = JSON.parse(savedSession);
+    const { firstName, lastName } = pendingProfileChanges;
+
+    session.firstName = firstName;
+    session.lastName = lastName;
+
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+
+    const fullName = `${firstName} ${lastName}`;
+    const initials = (
+        firstName.charAt(0) + lastName.charAt(0)
+    ).toUpperCase();
+
+    document.getElementById("profile-page-name").textContent = fullName;
+    document.getElementById("profile-page-avatar").textContent = initials;
+
+    showManagementDashboard(firstName, lastName);
+
+    profileConfirmModal.hidden = true;
+    pendingProfileChanges = null;
+
+    showSection("dashboard");
+    history.replaceState(null, "", "#dashboard");
 });
 
 // =========================================

@@ -98,6 +98,37 @@
         </div>
     </div>
 
+    <!-- Profile Changes Confirmation Dialog -->
+    <div id="profile-confirm-modal" class="logout-modal" hidden>
+        <div class="logout-dialog"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="profile-confirm-title"
+             aria-describedby="profile-confirm-description">
+
+            <h2 id="profile-confirm-title">Confirm Profile Changes</h2>
+
+            <p id="profile-confirm-description">
+                Are you sure you want to change your Administrator name?
+            </p>
+
+            <div class="logout-buttons">
+                <button type="button"
+                        id="cancel-profile-confirm"
+                        class="logout-cancel">
+                    No
+                </button>
+
+                <button type="button"
+                        id="confirm-profile-save"
+                        class="logout-confirm">
+                    Yes, Save Changes
+                </button>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
         <div class="sidebar-header">
@@ -248,16 +279,92 @@
                         </div>
 
                         <div class="admin-profile-actions">
-                            <button type="button" id="cancel-profile-changes">
-                                Cancel Changes
-                            </button>
-
                             <button type="submit" id="save-profile-changes">
                                 Save Changes
                             </button>
                         </div>
 
                     </form>
+
+                </div>
+
+            </section>
+
+            <!-- Administrator Preferences -->
+            <section id="preferences" class="page-section">
+
+                <div class="preferences-card">
+
+                    <h2>Dashboard Preferences</h2>
+                    <p class="preferences-intro">
+                        Customize your EduCorn dashboard experience.
+                    </p>
+
+                    <!-- Appearance -->
+                    <div class="preferences-group">
+                        <h3>Appearance</h3>
+
+                        <div class="preference-field">
+                            <label for="preference-theme">Theme</label>
+                            <select id="preference-theme">
+                                <option value="light">Light Mode</option>
+                                <option value="dark">Dark Mode</option>
+                            </select>
+                        </div>
+
+                        <div class="preference-field">
+                            <label for="preference-compact">Compact Layout</label>
+                            <input type="checkbox" id="preference-compact">
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Preferences -->
+                    <div class="preferences-group">
+                        <h3>Dashboard Preferences</h3>
+
+                        <div class="preference-field">
+                            <label for="preference-landing">Default Landing Page</label>
+                            <select id="preference-landing">
+                                <option value="dashboard">Dashboard</option>
+                                <option value="faculty">Faculty</option>
+                                <option value="students">Students</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Accessibility -->
+                    <div class="preferences-group">
+                        <h3>Accessibility</h3>
+
+                        <div class="preference-field">
+                            <label for="preference-text-size">Text Size</label>
+                            <select id="preference-text-size">
+                                <option value="small">Small</option>
+                                <option value="default" selected>Default</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+
+                        <div class="preference-field">
+                            <label for="preference-reduced-motion">
+                                Reduced Motion
+                            </label>
+                            <input
+                                type="checkbox"
+                                id="preference-reduced-motion">
+                        </div>
+                    </div>
+
+                    <!-- Preferences Actions -->
+                    <div class="preferences-actions">
+                        <button type="button" id="restore-preferences">
+                            Restore Defaults
+                        </button>
+
+                        <button type="button" id="save-preferences">
+                            Save Preferences
+                        </button>
+                    </div>
 
                 </div>
 
