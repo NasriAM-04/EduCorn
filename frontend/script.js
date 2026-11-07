@@ -601,6 +601,110 @@ preferencesButton.addEventListener("click", () => {
 });
 
 // =========================================
+// Administrator Preferences - Save and Restore
+// =========================================
+
+const PREFERENCES_KEY = "educorn_dashboard_preferences";
+
+const DEFAULT_PREFERENCES = {
+    theme: "light",
+    compact: false,
+    landing: "dashboard",
+    textSize: "default",
+    reducedMotion: false
+};
+
+function getPreferenceValues() {
+    return {
+        theme: document.getElementById("preference-theme").value,
+        compact: document.getElementById("preference-compact").checked,
+        landing: document.getElementById("preference-landing").value,
+        textSize: document.getElementById("preference-text-size").value,
+        reducedMotion: document.getElementById("preference-reduced-motion").checked
+    };
+}
+
+function applyPreferences(preferences) {
+    document.body.dataset.theme = preferences.theme;
+}
+
+function displayPreferences(preferences) {
+    document.getElementById("preference-theme").value =
+        preferences.theme;
+
+    document.getElementById("preference-compact").checked =
+        preferences.compact;
+
+    document.getElementById("preference-landing").value =
+        preferences.landing;
+
+    document.getElementById("preference-text-size").value =
+        preferences.textSize;
+
+    document.getElementById("preference-reduced-motion").checked =
+        preferences.reducedMotion;
+
+    applyPreferences(preferences);
+}
+
+function loadPreferences() {
+    try {
+        const saved = localStorage.getItem(PREFERENCES_KEY);
+
+        if (saved) {
+            const preferences = JSON.parse(saved);
+
+            displayPreferences({
+                ...DEFAULT_PREFERENCES,
+                ...preferences
+            });
+
+            return;
+        }
+    } catch (error) {
+        console.error("Unable to load preferences:", error);
+    }
+
+    displayPreferences(DEFAULT_PREFERENCES);
+}
+
+document.getElementById("save-preferences").addEventListener("click", () => {
+    try {
+        const preferences = getPreferenceValues();
+
+        localStorage.setItem(
+            PREFERENCES_KEY,
+            JSON.stringify(preferences)
+        );
+
+        applyPreferences(preferences);
+
+        alert("Preferences saved successfully!");
+    } catch (error) {
+        console.error("Unable to save preferences:", error);
+        alert("Unable to save preferences.");
+    }
+});
+
+document.getElementById("restore-preferences").addEventListener("click", () => {
+    try {
+        displayPreferences(DEFAULT_PREFERENCES);
+
+        localStorage.setItem(
+            PREFERENCES_KEY,
+            JSON.stringify(DEFAULT_PREFERENCES)
+        );
+
+        alert("Preferences restored to defaults!");
+    } catch (error) {
+        console.error("Unable to restore preferences:", error);
+        alert("Unable to restore preferences.");
+    }
+});
+
+loadPreferences();
+
+// =========================================
 // Administrator My Profile - Save Changes
 // =========================================
 

@@ -62,16 +62,14 @@ EduCorn also features original branding, including a custom-designed mascot, log
 - Preserves the updated Administrator information throughout the current browser session.
 
 ### Administrator Preferences — Under Development
+
 - Dedicated Preferences page with completed interface styling and working navigation.
-- **Appearance:** Light Mode, Dark Mode, and Compact Layout options.
-- **Dashboard Preferences:** Default Landing Page selection.
-- **Accessibility:** Text Size and Reduced Motion options.
-- Includes Save Preferences and Restore Defaults buttons.
-- Navigation between Preferences, My Profile, and the management sections displays the appropriate page headers.
-
-**Current Status:** The Preferences interface is implemented, and its controls are visible and selectable. However, theme switching, compact layout, landing-page selection, accessibility adjustments, saving preferences, and restoring defaults are not functional yet.
-
-The Preferences dropdown option is also planned to be hidden while the Preferences page is active.
+- Functional Light Mode and Dark Mode with updated dashboard colors.
+- Saves preferences using browser local storage.
+- Restore Defaults functionality.
+- Preferences dropdown option automatically hides while viewing Preferences.
+- Compact Layout, Text Size, and Reduced Motion controls are available but their effects remain under development.
+- Default Landing Page functionality is postponed until the remaining management sections are developed.
 
 ### Additional Management Sections
 The interface includes sections for:
@@ -163,15 +161,15 @@ EduCorn is an ongoing project. The following checklist tracks completed mileston
 - [x] Add real-time name validation to the demo login screen.
 - [x] Implement the Preferences page interface and navigation.
 - [x] Correct dashboard headers when navigating between Administrator and management sections.
+- [x] Implement Light/Dark Theme switching.
+- [x] Implement Save Preferences and Restore Defaults.
+- [x] Hide Preferences from its dropdown while viewing Preferences.
 
 ### In Progress and Planned
 
-- [ ] Implement Light/Dark Theme switching.
 - [ ] Implement Compact Layout.
 - [ ] Implement Default Landing Page preferences.
 - [ ] Implement Text Size and Reduced Motion settings.
-- [ ] Implement Save Preferences and Restore Defaults.
-- [ ] Hide Preferences from its dropdown while viewing Preferences.
 - [ ] Develop the About EduCorn page.
 - [ ] Improve existing Faculty and Student management.
 - [ ] Complete Course management.
@@ -201,21 +199,7 @@ The goal is to continue expanding EduCorn into a more complete school management
 
 ## Development Status
 
-**EduCorn is actively under development.**
-
-The current frontend includes an interactive school management dashboard, functional Faculty and Student management, a demo Administrator login, logout confirmation, and completed Administrator profile editing.
-
-Name validation is implemented in both the login and Administrator profile forms. Invalid entries containing numbers or unsupported special characters are rejected with descriptive error messages.
-
-The Administrator Preferences interface is also available, with working navigation and selectable settings. However, its appearance, dashboard customization, accessibility, and preference-saving functionality remain under development.
-
-Courses, Sections, Enrollments, and About EduCorn are planned for further implementation.
-
-The existing Java/SQLite database application remains separate from the web frontend. Integrating these components is a future development milestone.
-
-**EduCorn's live website is publicly accessible through GitHub Pages**, allowing visitors to explore the current frontend while development continues.
-
-The repository, documentation, and live website will continue to evolve as features are implemented, tested, and refined.
+The Administrator Preferences page includes functional Light and Dark Mode themes, browser-based preference saving, and Restore Defaults functionality. Compact Layout and accessibility adjustments remain under development. Default Landing Page functionality is postponed until the remaining management sections are completed.
 
 ## Author
 

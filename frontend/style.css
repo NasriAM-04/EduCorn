@@ -1294,3 +1294,62 @@ select:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================
+   Administrator Preferences - Dark Mode
+========================================= */
+
+body[data-theme="dark"] {
+    --background: #171717;
+    --surface: #252525;
+    --text-primary: #f5f5f5;
+    --text-secondary: #bdbdbd;
+    --border: #454545;
+    --sidebar-bg: #2b2118;
+    --sidebar-hover: #493626;
+}
+
+/* Profile Dropdown */
+body[data-theme="dark"] .profile-menu {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+body[data-theme="dark"] .profile-menu-item {
+    color: var(--text-primary);
+}
+
+body[data-theme="dark"] .profile-menu-item:hover {
+    background: #383838;
+}
+
+body[data-theme="dark"] .profile-menu-divider {
+    background: var(--border);
+}
+
+/* Tables */
+body[data-theme="dark"] thead,
+body[data-theme="dark"] tbody tr:hover {
+    background: #333333;
+}
+
+/* Input Fields and Dropdowns */
+body[data-theme="dark"] .preference-field select,
+body[data-theme="dark"] .admin-profile-field input,
+body[data-theme="dark"] .form-group input,
+body[data-theme="dark"] .form-group select,
+body[data-theme="dark"] .login-field input {
+    background: #303030;
+    color: var(--text-primary);
+    border-color: var(--border);
+}
+
+body[data-theme="dark"] .admin-profile-field input[readonly] {
+    background: var(--background);
+}
+
+/* Dialogs */
+body[data-theme="dark"] .modal-content {
+    background: var(--surface);
+    color: var(--text-primary);
+}
