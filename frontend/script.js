@@ -442,12 +442,22 @@ function showSection(sectionId) {
     });
 
     const profileMenuOption = document.querySelector(
-        '[data-profile-action="profile"]'
-    );
+    '[data-profile-action="profile"]'
+);
 
+const preferencesMenuOption = document.querySelector(
+    '[data-profile-action="preferences"]'
+);
+
+if (profileMenuOption) {
     profileMenuOption.style.display =
         sectionId === "my-profile" ? "none" : "";
+}
 
+if (preferencesMenuOption) {
+    preferencesMenuOption.style.display =
+        sectionId === "preferences" ? "none" : "";
+}
     if (sectionId === "preferences") {
         document.getElementById("page-title").textContent =
            "Preferences";
