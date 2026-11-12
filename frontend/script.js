@@ -450,8 +450,25 @@ const preferencesMenuOption = document.querySelector(
 );
 
 if (profileMenuOption) {
+    const aboutMenuOption = document.querySelector(
+    '[data-profile-action="about"]'
+);
+
+if (aboutMenuOption) {
+    aboutMenuOption.style.display =
+        sectionId === "about" ? "none" : "";
+}
     profileMenuOption.style.display =
         sectionId === "my-profile" ? "none" : "";
+}
+
+const faqMenuOption = document.querySelector(
+    '[data-profile-action="faq"]'
+);
+
+if (faqMenuOption) {
+    faqMenuOption.style.display =
+        sectionId === "faq" ? "none" : "";
 }
 
 if (preferencesMenuOption) {
@@ -463,7 +480,21 @@ if (preferencesMenuOption) {
            "Preferences";
 
         document.getElementById("page-description").textContent =
-           "Customize your EduCorn dashboard experience.";
+           "Customize your dashboard experience.";
+
+           } else if (sectionId === "about") {
+    document.getElementById("page-title").textContent =
+        "About EduCorn";
+
+    document.getElementById("page-description").textContent =
+        "Learn more about the EduCorn School Management System.";
+        
+} else if (sectionId === "faq") {
+    document.getElementById("page-title").textContent =
+        "FAQ";
+
+    document.getElementById("page-description").textContent =
+        "Find answers to frequently asked questions about EduCorn.";
 
     } else if (sectionId !== "my-profile") {
         document.getElementById("page-title").textContent =
@@ -601,6 +632,53 @@ preferencesButton.addEventListener("click", () => {
 });
 
 // =========================================
+// Administrator About EduCorn Navigation
+// =========================================
+
+const aboutButton = document.querySelector(
+    '[data-profile-action="about"]'
+);
+
+aboutButton.addEventListener("click", () => {
+    const savedSession = sessionStorage.getItem(SESSION_KEY);
+
+    if (!savedSession) {
+        showLoginPage();
+        return;
+    }
+
+    showSection("about");
+    history.replaceState(null, "", "#about");
+
+    profileMenu.hidden = true;
+    profileToggle.setAttribute("aria-expanded", "false");
+});
+
+
+ // =========================================
+ // Administrator FAQ Navigation
+ // =========================================
+
+const faqButton = document.querySelector(
+    '[data-profile-action="faq"]'
+);
+
+faqButton.addEventListener("click", () => {
+    const savedSession = sessionStorage.getItem(SESSION_KEY);
+
+    if (!savedSession) {
+        showLoginPage();
+        return;
+    }
+
+    showSection("faq");
+    history.replaceState(null, "", "#faq");
+
+    profileMenu.hidden = true;
+    profileToggle.setAttribute("aria-expanded", "false");
+});
+
+// =========================================
 // Administrator Preferences - Save and Restore
 // =========================================
 
@@ -626,6 +704,18 @@ function getPreferenceValues() {
 
 function applyPreferences(preferences) {
     document.body.dataset.theme = preferences.theme;
+
+    document.body.classList.toggle(
+        "compact-layout",
+        preferences.compact
+    );
+
+    document.body.dataset.textSize = preferences.textSize;
+
+    document.body.classList.toggle(
+        "reduced-motion",
+        preferences.reducedMotion
+    );
 }
 
 function displayPreferences(preferences) {

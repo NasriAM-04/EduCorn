@@ -19,12 +19,14 @@ EduCorn also features original branding, including a custom-designed mascot, log
 ## Features
 
 ### Interactive Dashboard
+
 - Custom-designed school management interface
 - Sidebar navigation for different management sections
 - Responsive user interface elements
 - Original EduCorn branding and visual assets
 
 ### Demo Administrator Login
+
 - Personalized login experience using first and last names.
 - Real-time validation for both First Name and Last Name.
 - Rejects numbers and unsupported special characters with descriptive error messages.
@@ -35,6 +37,7 @@ EduCorn also features original branding, including a custom-designed mascot, log
 **Note:** The current login is intended for portfolio demonstration purposes and does not provide production-level authentication.
 
 ### Faculty Management
+
 - Add new faculty records
 - View existing faculty records
 - Edit faculty information
@@ -42,6 +45,7 @@ EduCorn also features original branding, including a custom-designed mascot, log
 - Organize faculty information by department, subject, and role
 
 ### Student Management
+
 - Add new student records
 - View existing student records
 - Edit student information
@@ -50,6 +54,7 @@ EduCorn also features original branding, including a custom-designed mascot, log
 - Organize students by academic major
 
 ### Administrator Profile
+
 - Fully functional Administrator profile management.
 - Displays the Administrator's full name, avatar initials, role, and account type.
 - Allows the Administrator to update their first and last names.
@@ -61,18 +66,44 @@ EduCorn also features original branding, including a custom-designed mascot, log
 - Automatically returns to Dashboard after a successful name change.
 - Preserves the updated Administrator information throughout the current browser session.
 
-### Administrator Preferences — Under Development
+### Administrator Preferences
 
 - Dedicated Preferences page with completed interface styling and working navigation.
 - Functional Light Mode and Dark Mode with updated dashboard colors.
-- Saves preferences using browser local storage.
+- Compact Layout reduces spacing throughout the dashboard.
+- Adjustable Text Size settings: Small, Default, and Large.
+- Reduced Motion disables interface animations and transitions.
+- Saves and loads preferences using browser local storage.
 - Restore Defaults functionality.
 - Preferences dropdown option automatically hides while viewing Preferences.
-- Compact Layout, Text Size, and Reduced Motion controls are available but their effects remain under development.
 - Default Landing Page functionality is postponed until the remaining management sections are developed.
 
+### About EduCorn
+
+- Dedicated About EduCorn page accessible through the Administrator profile dropdown.
+- Full-width responsive design without surrounding information cards.
+- Displays the official EduCorn mascot, application name, and version.
+- Provides a detailed description of EduCorn's purpose and functionality.
+- Includes information about the frontend technologies and database foundation.
+- Displays developer and creator information.
+- Supports Light Mode, Dark Mode, Compact Layout, and accessibility preferences.
+- About EduCorn automatically hides from the profile dropdown while viewing its page.
+
+### Frequently Asked Questions (FAQ)
+
+- Dedicated FAQ page accessible through the Administrator profile dropdown.
+- Includes 10 questions and answers about EduCorn and practical school management scenarios.
+- Expandable and collapsible answers with interactive plus/minus indicators.
+- Full-width design with horizontal dividers and no surrounding information cards.
+- Includes a Contact the Developer section beneath Question 10.
+- Provides a clickable email link for additional inquiries.
+- Supports Light Mode, Dark Mode, Compact Layout, and accessibility preferences.
+- FAQ automatically hides from the profile dropdown while viewing its page.
+
 ### Additional Management Sections
+
 The interface includes sections for:
+
 - Courses
 - Sections
 - Enrollments
@@ -162,15 +193,18 @@ EduCorn is an ongoing project. The following checklist tracks completed mileston
 - [x] Implement the Preferences page interface and navigation.
 - [x] Correct dashboard headers when navigating between Administrator and management sections.
 - [x] Implement Light/Dark Theme switching.
+- [x] Implement Compact Layout.
+- [x] Implement Text Size and Reduced Motion settings.
 - [x] Implement Save Preferences and Restore Defaults.
 - [x] Hide Preferences from its dropdown while viewing Preferences.
+- [x] Complete the About EduCorn page and navigation.
+- [x] Implement FAQ with 10 expandable questions and answers.
+- [x] Add Contact the Developer with a functional email link.
+- [x] Hide About EduCorn and FAQ from the dropdown while viewing their respective pages.
 
 ### In Progress and Planned
 
-- [ ] Implement Compact Layout.
 - [ ] Implement Default Landing Page preferences.
-- [ ] Implement Text Size and Reduced Motion settings.
-- [ ] Develop the About EduCorn page.
 - [ ] Improve existing Faculty and Student management.
 - [ ] Complete Course management.
 - [ ] Complete Section management.
@@ -199,7 +233,17 @@ The goal is to continue expanding EduCorn into a more complete school management
 
 ## Development Status
 
-The Administrator Preferences page includes functional Light and Dark Mode themes, browser-based preference saving, and Restore Defaults functionality. Compact Layout and accessibility adjustments remain under development. Default Landing Page functionality is postponed until the remaining management sections are completed.
+The current frontend includes an interactive school management dashboard, functional Faculty and Student management, a demo Administrator login, logout confirmation, and completed Administrator profile editing.
+
+The Administrator Preferences page includes functional Light and Dark Mode themes, Compact Layout, adjustable Text Size settings, Reduced Motion, browser-based preference saving, and Restore Defaults functionality.
+
+The About EduCorn page is complete, featuring the official EduCorn branding, a detailed application description, technology information, and developer information.
+
+The FAQ page is complete with 10 expandable questions and answers about EduCorn and practical school management scenarios. It also includes a Contact the Developer section with a clickable email address for additional inquiries.
+
+The Administrator profile dropdown provides working navigation between My Profile, Preferences, About EduCorn, and FAQ, with automatic visibility adjustments for the currently active page.
+
+Default Landing Page functionality remains postponed until the remaining management sections are developed. Further improvements to the Dashboard, Faculty and Student management, completion of Courses, Sections, and Enrollments, and frontend-database integration remain future development milestones.
 
 ## Author
 

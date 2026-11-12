@@ -1353,3 +1353,503 @@ body[data-theme="dark"] .modal-content {
     background: var(--surface);
     color: var(--text-primary);
 }
+
+/* =========================================
+   Administrator Preferences - Compact Layout
+========================================= */
+
+/* Main Content Spacing */
+body.compact-layout main {
+    padding: 22px;
+}
+
+/* Dashboard Cards */
+body.compact-layout .stats-grid {
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+body.compact-layout .stat-card {
+    padding: 16px;
+}
+
+body.compact-layout .stat-number {
+    font-size: 30px;
+    margin: 8px 0 4px;
+}
+
+/* Dashboard Panels */
+body.compact-layout .dashboard-panel {
+    padding: 18px;
+}
+
+/* Management Tables */
+body.compact-layout th,
+body.compact-layout td {
+    padding: 10px 14px;
+}
+
+body.compact-layout .table-header {
+    padding: 16px;
+}
+
+/* Sidebar Navigation */
+body.compact-layout .sidebar-nav {
+    gap: 4px;
+}
+
+body.compact-layout .nav-link {
+    padding: 8px 12px;
+}
+
+/* Section Headings */
+body.compact-layout .section-heading {
+    margin-bottom: 18px;
+}
+
+/* Administrator Pages */
+body.compact-layout .preferences-card,
+body.compact-layout .admin-profile-card {
+    padding: 22px;
+}
+
+body.compact-layout .preferences-group {
+    padding: 16px 0;
+}
+
+body.compact-layout .preference-field {
+    margin-bottom: 12px;
+}
+
+/* =========================================
+   Administrator Preferences - Accessibility
+========================================= */
+
+/* Text Size: Small */
+body[data-text-size="small"] {
+    --text-scale: 0.9;
+}
+
+/* Text Size: Large */
+body[data-text-size="large"] {
+    --text-scale: 1.15;
+}
+
+/* Apply Text Scaling */
+body:is([data-text-size="small"], [data-text-size="large"]) {
+    font-size: calc(16px * var(--text-scale));
+}
+
+/* Page Titles */
+body:is([data-text-size="small"], [data-text-size="large"]) .top-header h1 {
+    font-size: calc(23px * var(--text-scale));
+}
+
+body:is([data-text-size="small"], [data-text-size="large"]) .section-heading h2 {
+    font-size: calc(26px * var(--text-scale));
+}
+
+/* Preferences Headings */
+body:is([data-text-size="small"], [data-text-size="large"]) .preferences-card > h2 {
+    font-size: calc(22px * var(--text-scale));
+}
+
+body:is([data-text-size="small"], [data-text-size="large"]) .preferences-group h3 {
+    font-size: calc(17px * var(--text-scale));
+}
+
+/* Navigation */
+body:is([data-text-size="small"], [data-text-size="large"]) .nav-link {
+    font-size: calc(16px * var(--text-scale));
+}
+
+/* Labels, Inputs, Tables, and Descriptions */
+body:is([data-text-size="small"], [data-text-size="large"]) :is(
+    .preference-field label,
+    .preference-field select,
+    .profile-menu-item,
+    .top-header p,
+    .section-heading p,
+    .preferences-intro,
+    .admin-profile-header p,
+    .dashboard-panel p,
+    .admin-profile-field input,
+    .form-group input,
+    .form-group select,
+    .primary-btn,
+    .secondary-btn,
+    td
+) {
+    font-size: calc(14px * var(--text-scale));
+}
+
+/* Small Labels */
+body:is([data-text-size="small"], [data-text-size="large"]) :is(
+    .admin-profile-field label,
+    .login-field label
+) {
+    font-size: calc(13px * var(--text-scale));
+}
+
+/* Table Headers and Footer */
+body:is([data-text-size="small"], [data-text-size="large"]) :is(
+    th,
+    .main-footer,
+    .stat-card span
+) {
+    font-size: calc(12px * var(--text-scale));
+}
+
+/* Reduced Motion */
+body.reduced-motion,
+body.reduced-motion *,
+body.reduced-motion *::before,
+body.reduced-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+/* =========================================
+   Administrator - About EduCorn
+========================================= */
+
+/* Main About Layout */
+.about-educorn {
+    width: 100%;
+    margin: 0 auto;
+    color: var(--text-primary);
+}
+
+/* EduCorn Branding */
+.about-hero {
+    text-align: center;
+    padding: 35px 20px 50px;
+}
+
+.about-mascot {
+    display: block;
+    width: 240px;
+    max-width: 70%;
+    height: auto;
+    margin: 0 auto 20px;
+    object-fit: contain;
+}
+
+.about-hero h2 {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.about-subtitle {
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.about-version {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* Information Sections */
+.about-section {
+    width: 100%;
+    padding: 35px 0;
+    border-top: 1px solid var(--border);
+}
+
+.about-section h3 {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 22px;
+}
+
+/* Detailed Application Description */
+.about-section > p {
+    max-width: 95ch;
+    font-size: 1em;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.about-section > p:last-child {
+    margin-bottom: 0;
+}
+
+/* Technologies Used */
+.about-technologies {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px;
+    max-width: 950px;
+}
+
+.about-tech-group h4 {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.about-tech-group p {
+    font-size: 1em;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Developer Information */
+.about-section .about-developer-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+/* Compact Layout Support */
+body.compact-layout .about-hero {
+    padding: 20px 15px 30px;
+}
+
+body.compact-layout .about-section {
+    padding: 22px 0;
+}
+
+body.compact-layout .about-section > p {
+    margin-bottom: 12px;
+}
+
+/* Responsive Layout */
+@media (max-width: 700px) {
+    .about-hero {
+        padding: 20px 10px 35px;
+    }
+
+    .about-mascot {
+        width: 180px;
+    }
+
+    .about-hero h2 {
+        font-size: 2em;
+    }
+
+    .about-section {
+        padding: 25px 0;
+    }
+
+    .about-technologies {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+
+/* =========================================
+   Administrator - FAQ
+========================================= */
+
+/* Main FAQ Layout */
+.faq-educorn {
+    width: 100%;
+    margin: 0 auto;
+    color: var(--text-primary);
+}
+
+/* FAQ Header */
+.faq-header {
+    padding: 20px 0 35px;
+}
+
+.faq-header h2 {
+    font-size: 2em;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.faq-header p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* FAQ Questions */
+.faq-list {
+    width: 100%;
+}
+
+.faq-item {
+    border-top: 1px solid var(--border);
+}
+
+.faq-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-item summary {
+    position: relative;
+    display: block;
+    padding: 23px 45px 23px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Expand and Collapse Symbols */
+.faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    font-weight: 400;
+    color: var(--primary);
+}
+
+.faq-item[open] summary::after {
+    content: "−";
+}
+
+/* FAQ Answers */
+.faq-item p {
+    max-width: 95ch;
+    padding: 0 45px 24px 0;
+    font-size: 1em;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+/* Keyboard Accessibility */
+.faq-item summary:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Compact Layout Support */
+body.compact-layout .faq-header {
+    padding: 10px 0 22px;
+}
+
+body.compact-layout .faq-item summary {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+body.compact-layout .faq-item p {
+    padding-bottom: 15px;
+}
+
+/* Responsive Layout */
+@media (max-width: 700px) {
+    .faq-header {
+        padding: 10px 0 25px;
+    }
+
+    .faq-item summary {
+        padding: 18px 35px 18px 0;
+    }
+
+    .faq-item p {
+        padding-right: 15px;
+    }
+}
+
+
+/* =========================================
+   FAQ - Contact the Developer
+========================================= */
+
+/* Contact Section */
+.faq-contact {
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px 0 35px;
+    color: var(--text-primary);
+}
+
+/* Contact Heading */
+.faq-contact h3 {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* Contact Description */
+.faq-contact > p {
+    max-width: 95ch;
+    font-size: 1em;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+/* Developer Information */
+.faq-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-contact-info p {
+    font-size: 1em;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Developer Name */
+.faq-contact-info .faq-contact-name {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Email Link */
+.faq-contact-info a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.faq-contact-info a:hover {
+    text-decoration: underline;
+}
+
+.faq-contact-info a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+/* Compact Layout */
+body.compact-layout .faq-contact {
+    margin-top: 25px;
+    padding: 15px 0 25px;
+}
+
+/* Responsive Layout */
+@media (max-width: 700px) {
+    .faq-contact {
+        margin-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .faq-contact h3 {
+        font-size: 1.4em;
+    }
+
+    .faq-contact-info a {
+        overflow-wrap: anywhere;
+    }
+}

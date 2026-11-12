@@ -14,7 +14,7 @@
     <script src="script.js" defer></script>
 </head>
 
-<body>
+<div>
 
     <!-- EduCorn Demo Login Page -->
     <section id="login-page" class="login-page" hidden>
@@ -208,6 +208,11 @@
             <span>About EduCorn</span>
         </button>
 
+        <button type="button" class="profile-menu-item" data-profile-action="faq">
+    <span class="profile-menu-icon" aria-hidden="true">❓</span>
+    <span>FAQ</span>
+</button>
+
         <div class="profile-menu-divider"></div>
 
         <button type="button" class="profile-menu-item logout-item" data-profile-action="logout">
@@ -296,9 +301,6 @@
                 <div class="preferences-card">
 
                     <h2>Dashboard Preferences</h2>
-                    <p class="preferences-intro">
-                        Customize your EduCorn dashboard experience.
-                    </p>
 
                     <!-- Appearance -->
                     <div class="preferences-group">
@@ -369,6 +371,282 @@
                 </div>
 
             </section>
+
+            <!-- Administrator About EduCorn -->
+<section id="about" class="page-section">
+
+    <div class="about-educorn">
+
+        <!-- EduCorn Branding -->
+        <div class="about-hero">
+
+            <img
+                src="images/EduCorn_Mascot_Transparent.png"
+                alt="EduCorn Official Mascot"
+                class="about-mascot">
+
+            <h2>EduCorn</h2>
+
+            <p class="about-subtitle">
+                School Management System
+            </p>
+
+            <p class="about-version">
+                Version 1.0
+            </p>
+
+        </div>
+
+        <!-- About the Application -->
+        <div class="about-section">
+
+            <h3>About EduCorn</h3>
+
+            <p>
+                EduCorn is a school management system designed to
+                simplify the organization, accessibility, and
+                management of academic information. The application
+                provides a centralized environment where school
+                administrators can manage essential records,
+                navigate administrative functions, and maintain
+                structured information through an intuitive
+                and user-friendly dashboard.
+            </p>
+
+            <p>
+                The system focuses on making everyday school
+                administration more efficient by bringing multiple
+                management functions together in one interface.
+                Its current web application supports faculty and
+                student record management, allowing administrators
+                to add, view, update, and delete information.
+                The dashboard also provides an overview of
+                academic records, helping administrators access
+                important information in one centralized location.
+            </p>
+
+            <p>
+                EduCorn emphasizes usability, organization, and
+                personalization. Its interface features clearly
+                structured navigation, administrator profile
+                management, and customizable preferences.
+                Users can adjust the application's appearance
+                through light and dark themes, compact layouts,
+                adjustable text sizes, and reduced-motion settings
+                to accommodate different viewing preferences.
+            </p>
+
+            <p>
+                Beyond its interactive interface, EduCorn explores
+                the relationship between software engineering,
+                database management, and application development.
+                The current frontend uses browser-based storage
+                for demonstration purposes, while a separate
+                Java and SQLite database foundation supports
+                the project's broader architectural goals.
+                Future development aims to expand the management
+                of courses, sections, and enrollments while
+                integrating the frontend and database components.
+            </p>
+
+            <p>
+                EduCorn is an independently developed software
+                engineering project demonstrating how thoughtful
+                application design and structured data management
+                can contribute to a more organized, accessible,
+                and efficient school administration experience.
+            </p>
+
+        </div>
+
+        <!-- Technologies Used -->
+        <div class="about-section">
+
+            <h3>Technologies Used</h3>
+
+            <div class="about-technologies">
+
+                <div class="about-tech-group">
+                    <h4>Frontend Development</h4>
+                    <p>HTML5, CSS3, JavaScript</p>
+                </div>
+
+                <div class="about-tech-group">
+                    <h4>Database Foundation</h4>
+                    <p>Java, SQLite, JDBC</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Developer Information -->
+        <div class="about-section">
+
+            <h3>Developer Information</h3>
+
+            <p class="about-developer-name">
+                Mouath Nasri
+            </p>
+
+            <p>
+                Developer and Creator of EduCorn
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Administrator Frequently Asked Questions -->
+<section id="faq" class="page-section">
+
+    <div class="faq-educorn">
+
+        <div class="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>
+                Find answers to common questions about EduCorn
+                and its school management functionality.
+            </p>
+        </div>
+
+        <div class="faq-list">
+
+            <details class="faq-item">
+                <summary>1. What is EduCorn?</summary>
+                <p>
+                    EduCorn is a school management system designed
+                    to help organize and manage academic records
+                    through a centralized dashboard. It is an
+                    independently developed software engineering project.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>2. Who is EduCorn designed for?</summary>
+                <p>
+                    EduCorn is designed around the needs of school
+                    administrators who manage faculty, students,
+                    courses, sections, and enrollment information.
+                    Its current version is a portfolio demonstration
+                    rather than a production school system.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>3. Do I need to create an account to use EduCorn?</summary>
+                <p>
+                    No. EduCorn currently provides a demonstration
+                    login where visitors enter their first and last
+                    names. No registered account or password is required.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>4. What academic records can I currently manage?</summary>
+                <p>
+                    The frontend currently supports adding, viewing,
+                    editing, and deleting faculty and student records.
+                    Courses, Sections, and Enrollments remain
+                    under development.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>5. Where does EduCorn store my information?</summary>
+                <p>
+                    The current web dashboard uses browser local
+                    storage to save demonstration records and preferences.
+                    This means the information is stored locally in
+                    the browser rather than in a shared school database.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>6. Can multiple school administrators share the same records?</summary>
+                <p>
+                    Not currently. EduCorn does not yet support
+                    shared accounts or synchronized records across
+                    different users and devices. These capabilities
+                    would require further backend development.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>7. Can a real school use EduCorn to manage official student records?</summary>
+                <p>
+                    Not in its current state. EduCorn is a development
+                    and demonstration project, and its browser-based
+                    storage and demo login are not suitable for handling
+                    real confidential academic records.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>8. Can I customize EduCorn's appearance and accessibility settings?</summary>
+                <p>
+                    Yes. EduCorn includes Light and Dark Mode,
+                    Compact Layout, adjustable text sizes, and
+                    Reduced Motion. Users can save their preferences
+                    or restore the default settings.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>9. What happens if I accidentally delete or modify a record in EduCorn?</summary>
+                <p>
+                    EduCorn allows administrators to manage academic
+                    records through its dashboard. Certain actions,
+                    such as deleting records, require confirmation
+                    to help prevent accidental changes. Users should
+                    review information carefully before saving
+                    modifications, as the system does not currently
+                    provide a dedicated undo or record-recovery feature.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>10. What is the long-term goal of EduCorn?</summary>
+                <p>
+                    The goal is to develop EduCorn into a more complete
+                    school management application by expanding its
+                    administrative capabilities, completing the remaining
+                    management modules, and integrating its frontend
+                    with a database-backed system.
+                </p>
+            </details>
+
+    </div>
+
+    <!-- Contact the Developer -->
+<section class="faq-contact">
+
+    <h3>Contact the Developer</h3>
+
+    <p>
+        Have additional questions about EduCorn, its
+        functionality, or its development? For further
+        inquiries, please feel free to contact the
+        developer using the email address below.
+    </p>
+
+        <div class="faq-contact-info">
+    <p>
+        Email:
+        <a href="mailto:nasriam122704@icloud.com">
+            nasriam122704@icloud.com
+        </a>
+    </p>
+</div>
+
+</section>
+
+</div>
+
+</section>
 
             <!-- Dashboard Overview -->
             <section id="dashboard" class="page-section active">
