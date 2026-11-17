@@ -1853,3 +1853,9 @@ body.compact-layout .faq-contact {
         overflow-wrap: anywhere;
     }
 }
+
+.faculty-expiration {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}

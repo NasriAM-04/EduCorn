@@ -38,20 +38,26 @@ EduCorn also features original branding, including a custom-designed mascot, log
 
 ### Faculty Management
 
-- Add new faculty records
-- View existing faculty records
-- Edit faculty information
-- Delete faculty records
-- Organize faculty information by department, subject, and role
+- Register and view faculty members.
+- Generate unique seven-digit Faculty IDs.
+- Automatically assign a two-year expiration based on the real-world calendar.
+- Display Faculty ID and expiration together in the ID / Expiration column.
+- Determine expiration semesters automatically: Winter (January–April), Summer (May–August), and Fall (September–December).
+- Validate First Name and Last Name in real time, rejecting numbers and unsupported special characters.
+- Organize faculty by department, subject, and role.
+- Preserve registered faculty information without an Edit option.
+- Delete faculty records with confirmation.
 
 ### Student Management
 
-- Add new student records
-- View existing student records
-- Edit student information
-- Delete student records
-- Generate student identifiers and school email addresses
-- Organize students by academic major
+- Register and view student records.
+- Generate unique student identifiers in the EC#1234567 format.
+- Automatically generate school email addresses using the student's first initial, last name, and four random digits.
+- Validate First Name and Last Name in real time, rejecting numbers and unsupported special characters.
+- Display descriptive validation errors and prevent invalid registrations.
+- Organize students by their selected academic major.
+- Preserve registered student information without an Edit option.
+- Delete student records with confirmation.
 
 ### Administrator Profile
 
@@ -179,8 +185,15 @@ EduCorn is an ongoing project. The following checklist tracks completed mileston
 ### Completed Milestones
 
 - [x] Create the initial school management dashboard.
-- [x] Implement demo Administrator login and logout.
-- [x] Implement Faculty management with CRUD operations.
+- [x] Implement Faculty registration, record viewing, and deletion.
+- [x] Implement Student registration, record viewing, and deletion.
+- [x] Generate unique seven-digit Faculty IDs.
+- [x] Implement automatic Faculty ID expiration using real-world semesters and a two-year validity period.
+- [x] Implement real-time Faculty name validation.
+- [x] Implement real-time Student name validation.
+- [x] Generate student email addresses with four random digits.
+- [x] Correct Faculty and Student record field displays.
+- [x] Remove Edit functionality from Faculty and Student management tables.
 - [x] Implement Student management with CRUD operations.
 - [x] Create original EduCorn branding, including mascot, logo, and visual identity.
 - [x] Publish the project source code on GitHub.
@@ -244,6 +257,14 @@ The FAQ page is complete with 10 expandable questions and answers about EduCorn 
 The Administrator profile dropdown provides working navigation between My Profile, Preferences, About EduCorn, and FAQ, with automatic visibility adjustments for the currently active page.
 
 Default Landing Page functionality remains postponed until the remaining management sections are developed. Further improvements to the Dashboard, Faculty and Student management, completion of Courses, Sections, and Enrollments, and frontend-database integration remain future development milestones.
+
+Faculty Management includes registration, record viewing, deletion, real-time name validation, unique seven-digit Faculty IDs, and automatic two-year expiration dates based on the real-world calendar and academic semesters.
+
+Student Management includes registration, record viewing, deletion, real-time name validation, unique EC# student identifiers, automatically generated school email addresses with four random digits, and academic major selection.
+
+Registered Faculty and Student records do not provide an Edit option. Their assigned identification information remains unchanged within the current registration interface unless the records are deleted.
+
+Faculty and Student records are currently stored in browser local storage. Integration with the Java/SQLite database backend remains a future development milestone.
 
 ## Author
 

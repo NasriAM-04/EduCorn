@@ -1088,7 +1088,18 @@ function renderTable(entity) {
     for (const record of records) {
         const row = document.createElement("tr");
 
-        row.appendChild(createCell(record.id));
+        
+const idCell = createCell(record.id);
+
+if (entity === "faculty" && record.expiration) {
+    const expirationLine = document.createElement("div");
+    expirationLine.textContent = record.expiration;
+    expirationLine.className = "faculty-expiration";
+
+    idCell.appendChild(expirationLine);
+}
+
+row.appendChild(idCell);
 
         for (const field of config.fields) {
             row.appendChild(
@@ -1105,6 +1116,7 @@ function renderTable(entity) {
 
         const actionsCell = document.createElement("td");
 
+        if (entity !== "students" && entity !== "faculty") {
         actionsCell.appendChild(
             createActionButton(
                 "Edit",
@@ -1114,6 +1126,7 @@ function renderTable(entity) {
                 record.id
             )
         );
+    }
 
         // Matches the original Java application's delete operation.
         if (entity === "enrollments" || entity === "faculty" || entity === "students") {
@@ -1411,6 +1424,38 @@ function generateStudentId() {
     return studentId;
 }
 
+function generateFacultyId() {
+    let facultyId;
+
+    do {
+        facultyId = Math.floor(
+            1000000 + Math.random() * 9000000
+        );
+    } while (
+        schoolData.faculty.some(faculty => faculty.id === facultyId)
+    );
+
+    return facultyId;
+}
+
+function generateFacultyExpiration() {
+    const today = new Date();
+    const month = today.getMonth();
+    const expirationYear = today.getFullYear() + 2;
+
+    let semester;
+
+    if (month >= 0 && month <= 3) {
+        semester = "Winter";
+    } else if (month >= 4 && month <= 7) {
+        semester = "Summer";
+    } else {
+        semester = "Fall";
+    }
+
+    return `${semester} ${expirationYear}`;
+}
+
 function handleFormSubmit(event) {
     event.preventDefault();
 
@@ -1436,8 +1481,11 @@ function handleFormSubmit(event) {
             const firstName = firstInput.value.trim();
             const lastName = lastInput.value.trim();
 
-            if (!firstName || !lastName) {
-                alert("Both first and last names are required.");
+            if (!validateProfileName(firstInput, "First name")) {
+                return;
+            }
+
+            if (!validateProfileName(firstInput, "Last name")) {
                 return;
             }
 
@@ -1456,6 +1504,17 @@ function handleFormSubmit(event) {
             const firstName = firstInput.value.trim();
             const lastName = lastInput.value.trim();
 
+            // Validate entered names before checking other required fields.
+            if (firstName && !validateProfileName(firstInput, "First name")) {
+                firstInput.focus();
+                return;
+                }
+
+            if (lastName && !validateProfileName(lastInput, "Last name")) {
+                lastInput.focus();
+                 return;
+                }
+
             if (!firstName || !lastName) {
                 alert("Both first and last names are required.");
                 return;
@@ -1467,13 +1526,8 @@ function handleFormSubmit(event) {
                 const firstInitial = firstName.charAt(0).toLowerCase();
                 const surname = lastName.toLowerCase().replace(/\s+/g, "");
 
-                recordData.email = `${firstInitial}${surname}@educorn.org`;
+                recordData.email = `${firstInitial}${surname}${String(Math.floor(Math.random() * 10000)).padStart(4, "0")}@educorn.org`;
             }
-
-            continue;
-        }
-
-        const input = recordForm.elements.namedItem(field.name);
 
             continue;
         }
@@ -1522,16 +1576,53 @@ function handleFormSubmit(event) {
             return;
         }
     }
+}
+
+if (currentEntity === "students") {
+    const majorInput = recordForm.elements.namedItem("major");
+
+    if (!majorInput || !majorInput.value.trim()) {
+        alert("Please select a major.");
+        majorInput?.focus();
+        return;
+    }
+
+    recordData.major = majorInput.value.trim();
+}
+
+
+if (currentEntity === "faculty") {
+    const facultyFields = ["department", "subject", "role"];
+
+    for (const fieldName of facultyFields) {
+        const input = recordForm.elements.namedItem(fieldName);
+
+        if (!input || !input.value.trim()) {
+            alert(`Please select a ${fieldName}.`);
+            input?.focus();
+            return;
+        }
+
+        recordData[fieldName] = input.value.trim();
+    }
+}
 
     const backup = structuredClone(schoolData);
 
-    if (editingId === null) {
-        schoolData[currentEntity].push({
-            id: currentEntity === "students"
+if (editingId === null) {
+    if (currentEntity === "faculty") {
+        recordData.expiration = generateFacultyExpiration();
+    }
+
+    schoolData[currentEntity].push({
+        id: currentEntity === "students"
             ? generateStudentId()
-            : getNextId(schoolData[currentEntity]),
-            ...recordData
-        });
+            : currentEntity === "faculty"
+                ? generateFacultyId()
+                : getNextId(schoolData[currentEntity]),
+        ...recordData
+    });
+
     } else {
         const record = schoolData[currentEntity].find(
             item => item.id === editingId
@@ -1555,6 +1646,20 @@ function handleFormSubmit(event) {
 }
 
 recordForm.addEventListener("submit", handleFormSubmit);
+
+recordForm.addEventListener("input", (event) => {
+    if (currentEntity !== "students" && currentEntity !== "faculty") {
+        return;
+    }
+
+    if (event.target.name === "first_name") {
+        validateProfileName(event.target, "First name");
+    }
+
+    if (event.target.name === "last_name") {
+        validateProfileName(event.target, "Last name");
+    }
+});
 
 function deleteRecord(entity, id) {
     if (entity !== "faculty" && entity !== "enrollments" && entity !== "students") {
